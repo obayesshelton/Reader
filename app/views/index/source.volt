@@ -37,10 +37,13 @@
 
                                     <li>
 
-                                        <input type="radio" name="star" class="star" id="star" />
-
                                         <div class="post_number">1</div>
                                         <a href="#" class="title">
+                                            <form id="ratingsForm">
+                                                <div class="stars">
+                                                    <input type="radio" name="star" class="star" id="star" />
+                                                </div>
+                                            </form>
                                             <strong>{{ articleSingle.getTitle() }}</strong> (matthewn)
                                         </a>
 
