@@ -1,0 +1,38 @@
+{
+    "name" :         "Reader",
+    "description" :  "Reader",
+    "keywords" :     ["reader"],
+    "homepage" :     "http://local.reader-app",
+    "license" :      "",
+    "authors" : [
+        {
+            "name" :  "Oliver Bayes-Shelton",
+            "email" : "me@bayes-shelton.co.uk"
+        }
+    ],
+    "repositories" : [
+        {
+            "type" : "composer",
+            "url"  : "https://packages.zendframework.com/"
+        },
+        {
+            "type" : "git",
+            "url"  : "https://github.com/josephbergevin/scraper-more-faster.git"
+        },
+        {
+            "type" : "git",
+            "url"  : "https://github.com/dg/rss-php.git"
+        },
+        {
+            "type" : "git",
+            "url"  : "https://github.com/php-fig/log.git"
+        }
+    ],
+    "require": {
+        "zendframework/zend-mime" :   "2.*",
+        "zendframework/zend-mail" :   "2.*",
+        "josephbergevin/scraper-more-faster" : "dev-master",
+        "dg/rss-php" : "dev-master",
+        "psr/log": "1.0.*@dev"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name" :         "Reader",
+    "description" :  "Reader",
+    "keywords" :     ["reader"],
+    "homepage" :     "http://local.reader-app",
+    "license" :      "",
+    "authors" : [
+        {
+            "name" :  "Oliver Bayes-Shelton",
+            "email" : "me@bayes-shelton.co.uk"
+        }
+    ],
+    "repositories": [
+        {
+            "type" : "package",
+            "package" : {
+                "name" :    "jquery/jquery",
+                "version" : "1.10.1",
+                "dist" : {
+                    "url" :  "http://code.jquery.com/jquery-1.10.1.min.js",
+                    "type" : "file"
+                }
+            }
+        }
+    ],
+    "require": {
+        "jquery/jquery" :     "1.10.*"
+    }
+}
