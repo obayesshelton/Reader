@@ -29,10 +29,6 @@
     <article id="maincontent">
         <h1>We are working on<br>something awesome</h1>
         <p>Beautifully crafted with attention to detail We have focused our time and effort on bringing you the best user experience possible. Every little detail has been carefully thought through and we will continuously bring you updates with great new features.</p>
-        <nav class="icons">
-            <a href="#newsletter" data-icon="b" class="icon"></a>
-            <a href="#map_canvas" data-icon="a" class="icon"></a>
-        </nav>
 
     </article>
     <!-- /#maincontent -->
