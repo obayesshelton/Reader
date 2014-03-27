@@ -37,11 +37,7 @@
 
                                     <li>
 
-                                        <form id="ratingsForm">
-                                            <div class="stars">
-                                                <input type="radio" name="star" class="star" id="star" />
-                                            </div>
-                                        </form>
+                                        <input type="radio" name="star" class="star" id="star" />
 
                                         <div class="post_number">1</div>
                                         <a href="#" class="title">
