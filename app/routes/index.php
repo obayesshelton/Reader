@@ -8,6 +8,11 @@ $router->add("/", array(
     'action'     => 'index'
 ));
 
+$router->add("/landing", array(
+    'controller' => 'index',
+    'action'     => 'landing'
+));
+
 $router->add("/source/{sourceName:[a-zA-Z]+}", array(
     'controller' => 'index',
     'action'     => 'source'

@@ -30,6 +30,11 @@ class IndexController extends BaseController
 
     }
 
+    public function landingAction()
+    {
+
+    }
+
     public function indexAction()
     {
         $source = \Source::find(array(
