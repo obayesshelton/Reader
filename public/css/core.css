@@ -115,3 +115,10 @@ li {
 
 .clear { clear: both;}
 
+#ratingsForm {
+    display: inline;
+}
+
+#ratingsForm .stars {
+    display: inline;
+}

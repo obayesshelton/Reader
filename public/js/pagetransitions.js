@@ -71,17 +71,17 @@ var PageTransitions = (function() {
 	$('body').keyup(function(event) {
        
         // handle cursor keys
-        if (event.keyCode == 37) {
+        //if (event.keyCode == 37) {
             // slide left
-            nextPage(animcursor = 6);
-            animateAction()
+        //    nextPage(animcursor = 6);
+        //    animateAction()
            
-        } else if (event.keyCode == 39) {
+        //} else if (event.keyCode == 39) {
             // slide right
-           nextPage(animcursor = 5);
-           animateAction()
+        //   nextPage(animcursor = 5);
+        ///   animateAction()
            
-        }
+       // }
 
         
     });
