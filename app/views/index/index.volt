@@ -168,7 +168,7 @@
 
     states.initialize();
 
-    $('.states').typeahead({
+    $('.source').typeahead({
                 highlight: true
             },
             {

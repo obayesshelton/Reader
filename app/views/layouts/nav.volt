@@ -8,7 +8,9 @@
             <li class="icon icon-arrow-left">
 
                 <a class="icon icon-display search" href="#">
-                        <input class="states" type="text" placeholder="states" value="">
+                    <div class="typeahead-wrapper">
+                        <input class="source" type="search" placeholder="source" value="">
+                    </div>
                 </a>
 
             </li>
@@ -23,7 +25,7 @@
                     <h2 class="icon icon-display">Technology</h2>
                     <ul>
                         {% for singleSource in source %}
-                        <li><a href="#">{{ singleSource.getName() }}</a></li>
+                        <li><a href="/source/{{ singleSource.getName() }}">{{ singleSource.getName() }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
