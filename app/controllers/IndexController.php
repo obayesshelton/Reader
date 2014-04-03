@@ -44,6 +44,10 @@ class IndexController extends BaseController
         $this->view->form = $form;
     }
 
+    public function fourofourAction() {
+
+    }
+
     /*public function indexAction()
     {
         $source = \Source::find(array(
