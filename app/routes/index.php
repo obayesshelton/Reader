@@ -17,3 +17,8 @@ $router->add("/source/{sourceName:[a-zA-Z]+}", array(
     'controller' => 'index',
     'action'     => 'source'
 ));
+
+$router->add("/search", array(
+    'controller' => 'index',
+    'action'     => 'search'
+));

@@ -27,7 +27,8 @@ class IndexController extends BaseController
 {
     public function initialize()
     {
-
+        $form = $this->getDI()->get('Forms\SearchForm'); /* @var \Forms\LoginForm $form */;
+        $this->view->form = $form;
     }
 
     public function landingAction()
@@ -79,5 +80,14 @@ class IndexController extends BaseController
         $this->view->sourceSearch = json_encode($data);
         $this->view->source = $source;
         $this->view->article = $article;
+    }
+
+    public function searchAction()
+    {
+        if ($this->request->isPost()) {
+            return $this->response->redirect('source/' . $this->request->getPost('source'));
+        } else {
+            echo 'NAUGHTY';
+        }
     }
 }

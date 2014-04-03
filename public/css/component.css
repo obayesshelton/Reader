@@ -557,7 +557,6 @@ float: left;
 
 .st-accordion ul li.st-open .title { font-size: 1.6em;}
 
-
 /* ---------- SEARCH ---------- */
 
 .search {
@@ -565,20 +564,19 @@ float: left;
     box-shadow: inset 0 -1px rgba(0,0,0,0);
 }
 
-.search input[type="search"],
+.search input[type="text"],
 .search input[type="submit"] {
     border-radius: 3px;
     font-size: 12px;
 }
 
-.search input[type="search"] {
+.search input[type="text"] {
     background: #fff;
     color: #42454e;
     min-width: 184px;
     padding: 6px 8px;
 }
 
-.search input[type="search"]::-webkit-input-placeholder { color: #42454e; }
-.search input[type="search"]:-moz-placeholder { color: #42454e; }
-.search input[type="search"]:-ms-input-placeholder { color: #42454e; }
-
+.search input[type="text"]::-webkit-input-placeholder { color: #42454e; }
+.search input[type="text"]:-moz-placeholder { color: #42454e; }
+.search input[type="text"]:-ms-input-placeholder { color: #42454e; }
