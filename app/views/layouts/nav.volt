@@ -2,9 +2,17 @@
 <nav id="mp-menu" class="mp-menu">
     <div class="mp-level">
 
-        <div class="typeahead-wrapper">
-            <input class="states" type="text" placeholder="states" value="">
-        </div>
+        <h2 class="icon icon-world">Search</h2>
+
+        <ul>
+            <li class="icon icon-arrow-left">
+
+                <a class="icon icon-display search" href="#">
+                        <input class="states" type="text" placeholder="states" value="">
+                </a>
+
+            </li>
+        </ul>
 
         <h2 class="icon icon-world">Feeds</h2>
         <ul>
@@ -34,6 +42,8 @@
                 </div>
             </li>-->
         </ul>
+
     </div>
+
 </nav>
 <!-- /mp-menu -->
