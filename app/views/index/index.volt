@@ -22,7 +22,7 @@
             <div class="pt-page pt-page-1">
                 <div id="headline">
                     <div class="bottom">
-                        <img src="images/logo.png"/>
+                        <img src="images/logo.png" height="153" width="99" class="main"/>
                         <!-- <h1>feed.me </h1> -->
                         <!-- <h2>You news... thats all</h2> -->
                     </div>
@@ -30,14 +30,8 @@
 
                 <div class="wrapper">
                     <div class="inner">
-                        <br>
 
-                        <h1>time to feed.me</h1>
 
-                        <h2>all the information you want, none of what you dont</h2>
-                        <br>
-
-                        <!-- TOP -->
 
                     </div>
                 </div>
@@ -61,7 +55,7 @@
 
 <script type="text/javascript" src="/js/jquery.accordion.js"></script>
 <script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
-]<script src="/js/typeahead.js"></script>
+<script src="/js/typeahead.js"></script>
 <script type="text/javascript">
     $(function () {
 
