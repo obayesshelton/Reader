@@ -28,7 +28,7 @@
 
     <article id="maincontent">
         <h1>News From Hundreds of Sources In One Spot</h1>
-        <p>(NAME) is a central silo for all your news. You can archive and share specific articles, publications and blogs. Create a single document from all your saved articles and read them on any device. Update daily, weekly, or monthly. Whatever fits your schedule. No-BS, just the good stuff.</p>
+        <p><strong>ReadForMe</strong> is a central silo for all your news. You can archive and share specific articles, publications and blogs. Create a single document from all your saved articles and read them on any device. Update daily, weekly, or monthly. Whatever fits your schedule. No-BS, just the good stuff.</p>
         <p>Beautifully crafted with attention to detail. We have focused our time and effort on bringing you the best user experience possible. Every little detail has been carefully thought through and we will continuously bring you updates with great new features.</p>
     </article>
     <!-- /#maincontent -->
@@ -40,18 +40,20 @@
 <section id="newsletter" class="">
     <article>
         <aside>
-            <h2>&nbsp;</h2>
-            <p>&nbsp;</p>
+            &nbsp;
         </aside>
         <div id="feed-form">
             <h2>Get notified when we launch!</h2>
             <p>Leave your email address and we will notify you when our journey starts:</p>
             <br/>
             <br/>
-            <form action="" method="post">
-                <input name="EMAIL" placeholder="Enter your email here" required type="email">
-                <input type="submit" value="">
-            </form>
+
+            {{ form() }}
+                {{ form.render('csrf', ['value': security.getToken()]) }}
+                {{ form.render('email', ['class': 'source']) }}
+                {{ form.render('add', ['value': '']) }}
+            {{ endForm() }}
+
             <div class="success-block"></div>
         </div>
     </article>
