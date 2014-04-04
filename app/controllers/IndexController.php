@@ -31,24 +31,24 @@ class IndexController extends BaseController
         $this->view->form = $form;
     }
 
-    /*public function indexAction()
+    public function indexAction()
     {
-        $form = $this->getDI()->get('Forms\BetaForm'); /* @var \Forms\LoginForm $form *//*;
+        $form = $this->getDI()->get('Forms\BetaForm'); /* @var \Forms\LoginForm $form */
 
-        /*$this->view->pick("index/landing");
+        $this->view->pick("index/landing");
 
         if ($this->request->isPost()) {
             // SHOW A NICE MESSAGE
         }
 
         $this->view->form = $form;
-    }*/
+    }
 
     public function fourofourAction() {
 
     }
 
-    public function indexAction()
+    /*public function indexAction()
     {
         $source = \Source::find(array(
             "status = :status:",
