@@ -101,5 +101,5 @@ class IndexController extends BaseController
         } else {
             echo 'NAUGHTY';
         }
-    }
+    }*/
 }

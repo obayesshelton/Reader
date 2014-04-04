@@ -1,6 +1,6 @@
 /* [9. Newsletter] */
 
-#newsletter                         { padding: 0px 50px; overflow: hidden; }
+#newsletter                         { padding: 0px 50px; overflow: hidden; z-index: 10; position: relative;}
 #newsletter > article               { max-width: 1130px;  margin: 0 auto; }
 #newsletter > article > aside       { float: left; width: 549px; }
 #newsletter > article > aside > p   { font-size: 17px; line-height: 23px; max-width: 410px; font-weight: 300; }
