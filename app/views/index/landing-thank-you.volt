@@ -43,18 +43,7 @@
             &nbsp;
         </aside>
         <div id="feed-form">
-            <h2>Get notified when we launch!</h2>
-            <p>Leave your email address and we will notify you when our journey starts:</p>
-            <br/>
-            <br/>
-
-            {{ form() }}
-                {{ form.render('csrf', ['value': security.getToken()]) }}
-                {{ form.render('email', ['class': 'source']) }}
-                {{ form.render('add', ['value': '']) }}
-            {{ endForm() }}
-
-            <div class="success-block"></div>
+            <div class="success-block">Thank you!</div>
         </div>
     </article>
 </section>
