@@ -107,10 +107,6 @@ $di->set('router', function() {
 	return $router;
 });
 
-$di->set('mail', function() {
-    return new \Zend_Mail_Transport_Exception();
-}, true);
-
 /**
  * Set the config in the DIC
  */

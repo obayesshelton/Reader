@@ -44,9 +44,20 @@
         </aside>
         <div id="feed-form">
             <h2>Get notified when we launch!</h2>
-            <p>Leave your email address and we will notify you when our journey starts:</p>
-            <br/>
-            <br/>
+
+            {% if success === 'false' %}
+
+                <h3>There was an error please try again:</h3>
+                <br/>
+                <br/>
+
+            {% else %}
+
+                <p>Leave your email address and we will notify you when our journey starts:</p>
+                <br/>
+                <br/>
+
+            {% endif %}
 
             {{ form() }}
                 {{ form.render('csrf', ['value': security.getToken()]) }}

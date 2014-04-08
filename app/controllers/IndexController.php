@@ -37,23 +37,33 @@ class IndexController extends BaseController
 
         $this->view->pick("index/landing");
 
+        $this->view->success = '';
+
         if ($this->request->isPost()) {
 
-            $MailChimp = new \Drewm\MailChimp('ae07e23bcac22c949ab6933518a4fa7b-us8');
-            $result = $MailChimp->call('lists/subscribe', array(
-                'id'                => '9dbe4318cc',
-                'email'             => array('email'=>'me@bayes-Shelton.co.uk'),
-                'merge_vars'        => array(),
-                'double_optin'      => false,
-                'update_existing'   => true,
-                'replace_interests' => false,
-                'send_welcome'      => false,
-            ));
+            if($form->isValid($this->request->getPost()) != false) {
 
-            if(isset($result['euid'])) {
-                $this->view->pick("index/landing-thank-you");
+                $email = $this->request->getPost('email');
+
+                $MailChimp = new \Drewm\MailChimp($this->getDI()->get('config')->mailchimp->key);
+                $result = $MailChimp->call('lists/subscribe', array(
+                    'id'                => '9dbe4318cc',
+                    'email'             => array('email' => $email),
+                    'merge_vars'        => array(),
+                    'double_optin'      => false,
+                    'update_existing'   => true,
+                    'replace_interests' => false,
+                    'send_welcome'      => false,
+                ));
+
+                if(isset($result['euid'])) {
+                    $this->view->pick("index/landing-thank-you");
+                } else {
+                    $this->view->success = 'false';
+                }
+
             } else {
-                $this->view->success = false;
+                $this->view->success = 'false';
             }
 
         }
