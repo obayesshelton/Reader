@@ -60,10 +60,8 @@
 </section>
 <!-- /#newsletter -->
 
-</body>
 <script type="text/javascript" src="/js/jquery10.8.min.js"></script>
 <script src="/js/typeahead.js"></script>
-<script>
-</script>
 
+</body>
 </html>
