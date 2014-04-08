@@ -26,6 +26,10 @@
         {
             "type" : "git",
             "url"  : "https://github.com/php-fig/log.git"
+        },
+        {
+            "type" : "git",
+            "url"  : "https://github.com/drewm/mailchimp-api.git"
         }
     ],
     "require": {
@@ -33,6 +37,7 @@
         "zendframework/zend-mail" :   "2.*",
         "josephbergevin/scraper-more-faster" : "dev-master",
         "dg/rss-php" : "dev-master",
-        "psr/log": "1.0.*@dev"
+        "psr/log" : "1.0.*@dev",
+        "drewm/mailchimp-api" : "dev-master"
     }
 }

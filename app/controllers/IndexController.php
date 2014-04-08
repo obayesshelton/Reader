@@ -38,7 +38,24 @@ class IndexController extends BaseController
         $this->view->pick("index/landing");
 
         if ($this->request->isPost()) {
-            // SHOW A NICE MESSAGE
+
+            $MailChimp = new \Drewm\MailChimp('ae07e23bcac22c949ab6933518a4fa7b-us8');
+            $result = $MailChimp->call('lists/subscribe', array(
+                'id'                => '9dbe4318cc',
+                'email'             => array('email'=>'me@bayes-Shelton.co.uk'),
+                'merge_vars'        => array(),
+                'double_optin'      => false,
+                'update_existing'   => true,
+                'replace_interests' => false,
+                'send_welcome'      => false,
+            ));
+
+            if(isset($result['euid'])) {
+                $this->view->pick("index/landing-thank-you");
+            } else {
+                $this->view->success = false;
+            }
+
         }
 
         $this->view->form = $form;

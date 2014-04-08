@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e6df3a3b484732e55a85c8f79344e471",
+    "hash": "1924019f88f3faa95b769a57004d9ff1",
     "packages": [
         {
             "name": "dg/rss-php",
@@ -36,6 +36,36 @@
                 "rss"
             ],
             "time": "2014-01-17 17:12:40"
+        },
+        {
+            "name": "drewm/mailchimp-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drewm/mailchimp-api.git",
+                "reference": "5f61461306a86c32af01a40e45a3b5e0ee014eba"
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Drewm": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Drew McLellan",
+                    "homepage": "http://allinthehead.com/"
+                }
+            ],
+            "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
+            "homepage": "https://github.com/drewm/mailchimp-api",
+            "time": "2014-03-01 22:43:32"
         },
         {
             "name": "josephbergevin/scraper-more-faster",
@@ -457,7 +487,8 @@
     "stability-flags": {
         "josephbergevin/scraper-more-faster": 20,
         "dg/rss-php": 20,
-        "psr/log": 20
+        "psr/log": 20,
+        "drewm/mailchimp-api": 20
     },
     "platform": [
 
