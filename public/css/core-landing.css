@@ -16,6 +16,10 @@ h1 {
 	font-size: 3em;
 }
 
+input {
+    outline: none;
+}
+
 .swipe {
  	overflow: hidden;
   	visibility: hidden;
