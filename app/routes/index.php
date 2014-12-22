@@ -3,7 +3,7 @@
 /**
  * Authentication Routes
  */
-$router->add("/", array(
+/*$router->add("/", array(
     'controller' => 'index',
     'action'     => 'index'
 ));
@@ -22,3 +22,13 @@ $router->add("/search", array(
     'controller' => 'index',
     'action'     => 'search'
 ));
+
+$router->add("/login", array(
+    'controller' => 'user',
+    'action'     => 'login'
+));
+
+$router->add("/register", array(
+        'controller' => 'user',
+        'action'     => 'register'
+    ));*/

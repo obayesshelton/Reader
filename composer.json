@@ -1,41 +1,48 @@
 {
-    "name" :         "Reader",
-    "description" :  "Reader",
-    "keywords" :     ["reader"],
-    "homepage" :     "http://local.reader-app",
-    "license" :      "",
-    "authors" : [
-        {
-            "name" :  "Oliver Bayes-Shelton",
-            "email" : "me@bayes-shelton.co.uk"
-        }
-    ],
-    "repositories" : [
-        {
-            "type" : "composer",
-            "url"  : "https://packages.zendframework.com/"
-        },
-        {
-            "type" : "git",
-            "url"  : "https://github.com/josephbergevin/scraper-more-faster.git"
-        },
-        {
-            "type" : "git",
-            "url"  : "https://github.com/dg/rss-php.git"
-        },
-        {
-            "type" : "git",
-            "url"  : "https://github.com/php-fig/log.git"
-        }
-    ],
-    "require": {
-        "zendframework/zend-mime"            :   "2.*",
-        "zendframework/zend-mail"            :   "2.*",
-        "josephbergevin/scraper-more-faster" : "dev-master",
-        "dg/rss-php"                         : "dev-master",
-        "psr/log"                            : "1.0.*@dev",
-        "nyholm/google-api-php-client"       : "dev-master",
-        "imagine/imagine"                    : "dev-master",
-        "crada/phalcon-user-plugin"          : "1.*@dev"
+  "name" : "phalcon/vokuro",
+  "description" : "This is a sample application for the Phalcon PHP Framework",
+  "version" : "1.1.0",
+"repositories" : [
+    {
+        "type" : "composer",
+        "url"  : "https://packages.zendframework.com/"
+    },
+    {
+        "type" : "git",
+        "url"  : "https://github.com/josephbergevin/scraper-more-faster.git"
+    },
+    {
+        "type" : "git",
+        "url"  : "https://github.com/dg/rss-php.git"
+    },
+    {
+        "type" : "git",
+        "url"  : "https://github.com/php-fig/log.git"
     }
+],
+  "require" : {
+    "php" : ">=5.3.9",
+    "swiftmailer/swiftmailer" : "5.0.*",
+    "amazonwebservices/aws-sdk-for-php" : "~1.0",
+      "zendframework/zend-mime"            :   "2.*",
+      "zendframework/zend-mail"            :   "2.*",
+      "josephbergevin/scraper-more-faster" : "dev-master",
+      "dg/rss-php"                         : "dev-master",
+      "psr/log"                            : "1.0.*@dev",
+      "nyholm/google-api-php-client"       : "dev-master",
+      "imagine/imagine"                    : "dev-master",
+      "crada/phalcon-user-plugin"          : "1.*@dev"
+  },
+  "authors" : [ {
+    "name" : "Andres Gutierrez",
+    "email" : "andres@phalconphp.com"
+  },
+  {
+    "name" : "Mark Garrett",
+    "email" : "mark@moderndeveloperllc.com"
+  } ],
+  "keywords" : ["phalcon", "framework", "sample app" ],
+  "type" : "library",
+  "license" : "BSD-3",
+  "homepage" : "http://www.phalconphp.com"
 }

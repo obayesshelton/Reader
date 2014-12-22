@@ -1,90 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>feed.me</title>
-    <link rel="stylesheet" type="text/css" href="/css/default.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/core.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/multilevelmenu.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/component.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/animations.css"/>
-</head>
+{{ content() }}
 
-<body>
+<!-- CONTENT -->
+<section id="content">
 
-<div id="settings_btn"><span id="trigger" class="settings"></span></div>
-<div class="container">
-    <div id="pt-main" class="pt-perspective">
+    <aside>
+        <a href="#" class="logo">
+            <img src="images/logo.png" alt="">
+        </a>
+    </aside>
+    <!-- /aside -->
 
-        <div class="mp-pusher" id="mp-pusher">
+    <article id="maincontent">
+        <h1>News From Hundreds of Sources In One Spot</h1>
+        <p><strong>ReadForMe</strong> is a central silo for all your news. You can archive and share specific articles, publications and blogs. Create a single document from all your saved articles and read them on any device. Update daily, weekly, or monthly. Whatever fits your schedule. No-BS, just the good stuff.</p>
+        <p>Beautifully crafted with attention to detail. We have focused our time and effort on bringing you the best user experience possible. Every little detail has been carefully thought through and we will continuously bring you updates with great new features.</p>
+    </article>
+    <!-- /#maincontent -->
 
-            {{ partial("layouts/nav") }}
+</section>
+<!-- /#content -->
 
-            <div class="pt-page pt-page-1">
-                <div id="headline">
-                    <div class="bottom">
-                        <img src="images/logo.png" height="153" width="99" class="main"/>
-                        <!-- <h1>feed.me </h1> -->
-                        <!-- <h2>You news... thats all</h2> -->
-                    </div>
-                </div>
+<!-- NEWSLETTER -->
+<section id="newsletter" class="">
+    <article>
+        <aside>
+            &nbsp;
+        </aside>
+        <div id="feed-form">
+            <h2>Sign Up</h2>
+            <br/>
+            <br/>
 
-                <div class="wrapper">
-                    <div class="inner">
+            {{ form('class': 'form-search') }}
 
+                <table class="signup">
+                    <tr>
+                        <td align="right">{{ signUpform.label('name') }}</td>
+                        <td>
+                            {{ signUpform.render('name') }}
+                            {{ signUpform.messages('name') }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">{{ signUpform.label('email') }}</td>
+                        <td>
+                            {{ signUpform.render('email') }}
+                            {{ signUpform.messages('email') }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">{{ signUpform.label('password') }}</td>
+                        <td>
+                            {{ signUpform.render('password') }}
+                            {{ signUpform.messages('password') }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">{{ signUpform.label('confirmPassword') }}</td>
+                        <td>
+                            {{ signUpform.render('confirmPassword') }}
+                            {{ signUpform.messages('confirmPassword') }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"></td>
+                        <td>
+                            {{ signUpform.render('terms') }} {{ signUpform.label('terms') }}
+                            {{ signUpform.messages('terms') }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"></td>
+                        <td>{{ signUpform.render('Sign Up') }}</td>
+                    </tr>
+                </table>
 
+                {{ signUpform.render('csrf', ['value': security.getToken()]) }}
+                {{ signUpform.messages('csrf') }}
 
-                    </div>
-                </div>
-            </div>
+            </form>
 
+            <div class="success-block"></div>
         </div>
-        <!-- /pusher -->
-    </div>
-</div>
-<!-- /container -->
-<script src="/js/modernizr.custom.js"></script>
-<script src="/js/jquery10.8.min.js"></script>
-<script src="/js/jquery.dlmenu.js"></script>
-<script src="/js/classie.js"></script>
-<script src="/js/mlpushmenu.js"></script>
-<script>
-    new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
-</script>
-<script src="/js/pagetransitions.js"></script>
-<script src="/js/core.js"></script>
-
-<script type="text/javascript" src="/js/jquery.accordion.js"></script>
-<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
-<script src="/js/typeahead.js"></script>
-<script type="text/javascript">
-    $(function () {
-
-        $('.st-accordion').accordion({
-            oneOpenedItem: true
-        });
-
-    });
-</script>
-<script>
-    var states = new Bloodhound({
-        datumTokenizer: function(d) {
-            return Bloodhound.tokenizers.whitespace(d.val);
-        },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: {{ sourceSearch }}
-    });
-
-    states.initialize();
-
-    $('.source').typeahead({
-                highlight: true
-            },
-            {
-                displayKey: 'val',
-                source: states.ttAdapter()
-            });
-</script>
-
-
-</body>
-</html>
+    </article>
+</section>
+<!-- /#newsletter -->

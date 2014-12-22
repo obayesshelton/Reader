@@ -1,28 +1,17 @@
 <?php
-
-/**
- * Disable the default Controller/Action error
+/*
+ * Define custom routes. File gets included in the router service definition.
  */
-$router = new \Phalcon\Mvc\Router(false);
+$router = new Phalcon\Mvc\Router();
 
-/**
- * Sets up the paths for the included routes
- */
-$routes = glob(__DIR__ . "/../routes/*.php");
+$router->add('/confirm/{code}/{email}', array(
+    'controller' => 'user_control',
+    'action' => 'confirmEmail'
+));
 
-/**
- * for each route found in the $routes include the file
- */
-foreach ($routes as $route) {
-	include $route;
-}
-
-/**
- * Set 404 page
- */
-$router->notFound(array(
-    "controller" => "index",
-    "action" => "fourofour"
+$router->add('/reset-password/{code}/{email}', array(
+    'controller' => 'user_control',
+    'action' => 'resetPassword'
 ));
 
 return $router;

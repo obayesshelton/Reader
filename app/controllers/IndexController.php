@@ -1,29 +1,13 @@
 <?php
+namespace Vokuro\Controllers;
+
+use Vokuro\Models\Source;
+use Vokuro\Forms\SignUpForm;
 
 /**
- * ComplySec Short Description
- *
- * ComplySec Long description
- *
- * PHP version 5.5
- * PHALCON version 1.2.1
- *
- * @category Controllers
- * @package ComplySec
- * @subpackage Application
- * @author Oliver Bayes-Shelton <oliver.bayes-shelton@randomstorm.com>
- *
- * @copyright 2013 RandomStorm Limited <www.randomstorm.com>
- * @license None
- *
- * @version 1.0
- * @link http://docs.complysec.net
+ * Display the default index page.
  */
-
-use Phalcon\Mvc\Controller,
-	Phalcon\Tag;
-
-class IndexController extends BaseController
+class IndexController extends ControllerBase
 {
     public function initialize()
     {
@@ -31,16 +15,15 @@ class IndexController extends BaseController
         $this->view->form = $form;
     }
 
-    public function fourofourAction() {
-
-    }
-
+    /**
+     * Default action. Set the public layout (layouts/public.volt)
+     */
     public function indexAction()
     {
-        $source = \Source::find(array(
-            "status = :status:",
-            "bind" => array('status' => 1),
-        ));
+        $source = Source::find(array(
+                "status = :status:",
+                "bind" => array('status' => 1),
+            ));
 
         foreach($source as $sourceSingle) {
             $data[]['val'] = $sourceSingle->getName();
@@ -48,45 +31,11 @@ class IndexController extends BaseController
 
         $this->view->sourceSearch = json_encode($data);
         $this->view->source = $source;
-    }
 
-    public function sourceAction($sourceName)
-    {
-        $source = \Source::findFirst(array(
-            "name = :name: AND status = :status:",
-            "bind" => array(
-                'status' => 1,
-                'name'   => $sourceName
-            ),
-        ));
+        $signUpform = new SignUpForm();
+        $this->view->signUpform = $signUpform;
 
-        if($source === false) {
-            die('SEND TO 404');
-        }
-
-        $article = \Article::find(array(
-            "source_id = :source_id: AND status = :status:",
-            "bind" => array(
-                'status' => 1,
-                'source_id' => $source->getId()
-            ),
-        ));
-
-        foreach($source as $sourceSingle) {
-            $data[]['val'] = $sourceSingle->getName();
-        }
-
-        $this->view->sourceSearch = json_encode($data);
-        $this->view->source = $source;
-        $this->view->article = $article;
-    }
-
-    public function searchAction()
-    {
-        if ($this->request->isPost()) {
-            return $this->response->redirect('source/' . $this->request->getPost('source'));
-        } else {
-            echo 'NAUGHTY';
-        }
+        $this->view->setVar('logged_in', is_array($this->auth->getIdentity()));
+        $this->view->setTemplateBefore('public');
     }
 }

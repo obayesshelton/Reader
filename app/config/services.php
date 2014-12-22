@@ -1,13 +1,18 @@
 <?php
+use Phalcon\DI\FactoryDefault;
+use Phalcon\Mvc\View;
+use Phalcon\Crypt;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\Url as UrlResolver;
+use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
+use Phalcon\Mvc\Model\Metadata\Files as MetaDataAdapter;
+use Phalcon\Session\Adapter\Files as SessionAdapter;
+use Phalcon\Flash\Direct as Flash;
 
-use Phalcon\DI\FactoryDefault,
-	Phalcon\Mvc\View,
-	Phalcon\Mvc\Url as UrlResolver,
-	Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter,
-	Phalcon\Mvc\View\Engine\Volt as VoltEngine,
-    Phalcon\Cache\Frontend\Output as OutputFrontend,
-	Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter,
-	Phalcon\Session\Adapter\Files as SessionAdapter;
+use Vokuro\Auth\Auth;
+use Vokuro\Acl\Acl;
+use Vokuro\Mail\Mail;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
@@ -15,110 +20,128 @@ use Phalcon\DI\FactoryDefault,
 $di = new FactoryDefault();
 
 /**
+ * Register the global configuration as config
+ */
+$di->set('config', $config);
+
+/**
  * The URL component is used to generate all kind of urls in the application
  */
-$di->set('url', function() use ($config) {
-	$url = new UrlResolver();
-	$url->setBaseUri($config->application->baseUri);
-	return $url;
+$di->set('url', function () use ($config) {
+    $url = new UrlResolver();
+    $url->setBaseUri($config->application->baseUri);
+    return $url;
 }, true);
 
 /**
  * Setting up the view component
  */
-$di->set('view', function() use ($config) {
+$di->set('view', function () use ($config) {
 
-	$view = new View();
+    $view = new View();
 
-	$view->setViewsDir($config->application->viewsDir);
+    $view->setViewsDir($config->application->viewsDir);
 
-	$view->registerEngines(array(
-		'.volt' => function($view, $di) use ($config) {
+    $view->registerEngines(array(
+        '.volt' => function ($view, $di) use ($config) {
 
-			$volt = new VoltEngine($view, $di);
+            $volt = new VoltEngine($view, $di);
 
-			// compileAlways should be disabled on production
-			$volt->setOptions(array(
-				'compiledPath'      => $config->application->cacheDir . 'views/',
-				'compiledSeparator' => '_',
-				'compileAlways'     => true
-			));
-			
-			$compiler = $volt->getCompiler();
-			
-			$compiler->addFunction('dump', 'print_r');
-			
-			return $volt;
-		},
-		'.phtml' => 'Phalcon\Mvc\View\Engine\Php' // Generate Template files uses PHP itself as the template engine
-	));
+            $volt->setOptions(array(
+                'compiledPath' => $config->application->cacheDir . 'volt/',
+                'compiledSeparator' => '_'
+            ));
 
-	return $view;
+            return $volt;
+        }
+    ));
+
+    return $view;
 }, true);
 
 /**
  * Database connection is created based in the parameters defined in the configuration file
  */
-$di->set('db', function() use ($config) {
-	return new DbAdapter(array(
-		'host'     => $config->database->host,
-		'username' => $config->database->username,
-		'password' => $config->database->password,
-		'dbname'   => $config->database->dbname
-	));
+$di->set('db', function () use ($config) {
+    return new DbAdapter(array(
+        'host' => $config->database->host,
+        'username' => $config->database->username,
+        'password' => $config->database->password,
+        'dbname' => $config->database->dbname
+    ));
 });
 
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
-$di->set('modelsMetadata', function() use ($config) {
-	return new MetaDataAdapter();
+$di->set('modelsMetadata', function () use ($config) {
+    return new MetaDataAdapter(array(
+        'metaDataDir' => $config->application->cacheDir . 'metaData/'
+    ));
 });
 
 /**
  * Start the session the first time some component request the session service
  */
-$di->setShared('session', function()
-{
+$di->set('session', function () {
     $session = new SessionAdapter();
     $session->start();
     return $session;
 });
 
-$di->set('dispatcher', function() use ($di) {
-	$eventsManager = $di->getShared('eventsManager');
-
-	$auth = new Auth($di);
-
-	$eventsManager->attach('dispatch', $auth);
-
-	$dispatcher = new Phalcon\Mvc\Dispatcher();
-	$dispatcher->setEventsManager($eventsManager);
-
-	return $dispatcher;
+/**
+ * Crypt service
+ */
+$di->set('crypt', function () use ($config) {
+    $crypt = new Crypt();
+    $crypt->setKey($config->application->cryptSalt);
+    return $crypt;
 });
 
 /**
- * Imports the routing into the DI
- * @todo check if this is the correct way to do it
+ * Dispatcher use a default namespace
  */
-$di->set('router', function() {
-	require __DIR__.'/../../app/config/routes.php';
-	return $router;
+$di->set('dispatcher', function () {
+    $dispatcher = new Dispatcher();
+    $dispatcher->setDefaultNamespace('Vokuro\Controllers');
+    return $dispatcher;
 });
 
-$di->set('mail', function() {
-    return new \Zend_Mail_Transport_Exception();
-}, true);
+/**
+ * Loading routes from the routes.php file
+ */
+$di->set('router', function () {
+    return require __DIR__ . '/routes.php';
+});
 
 /**
- * Set the config in the DIC
+ * Flash service with custom CSS classes
  */
-$di->set('config', $config);
+$di->set('flash', function () {
+    return new Flash(array(
+        'error' => 'alert alert-error',
+        'success' => 'alert alert-success',
+        'notice' => 'alert alert-info'
+    ));
+});
 
-$di->set('cache', function() use ($config) {
-    return new \Phalcon\Cache\Backend\File(
-        new \Phalcon\Cache\Frontend\Data(array("lifetime" => $config->cache->lifetime)),
-        array("cacheDir" => $config->cache->cacheDir)
-    );
+/**
+ * Custom authentication component
+ */
+$di->set('auth', function () {
+    return new Auth();
+});
+
+/**
+ * Mail service uses AmazonSES
+ */
+$di->set('mail', function () {
+    return new Mail();
+});
+
+/**
+ * Access Control List
+ */
+$di->set('acl', function () {
+    return new Acl();
 });

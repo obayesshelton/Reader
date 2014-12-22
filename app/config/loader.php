@@ -1,25 +1,18 @@
 <?php
-
 $loader = new \Phalcon\Loader();
-
-$loader->registerNamespaces(
-    array(
-        "Service" => $config->application->servicesDir,
-        "Forms"   => $config->application->formsDir,
-    )
-);
 
 /**
  * We're a registering a set of directories taken from the configuration file
  */
-$loader->registerDirs(
-	array(
-		$config->application->controllersDir,
-		$config->application->pluginsDir,
-        $config->application->routesDir,
-        $config->application->libraryDir,
-        $config->application->viewsDir,
-        $config->application->cacheDir,
-        $config->application->modelsDir,
-	)
-)->register();
+$loader->registerNamespaces(array(
+    'Vokuro\Models' => $config->application->modelsDir,
+    'Vokuro\Controllers' => $config->application->controllersDir,
+    'Vokuro\Forms' => $config->application->formsDir,
+    'Vokuro' => $config->application->libraryDir,
+    "Forms"   => $config->application->formsDir
+));
+
+$loader->register();
+
+// Use composer autoloader to load vendor classes
+require_once __DIR__ . '/../../vendor/autoload.php';
