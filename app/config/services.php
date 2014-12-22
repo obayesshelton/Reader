@@ -145,3 +145,10 @@ $di->set('mail', function () {
 $di->set('acl', function () {
     return new Acl();
 });
+
+$di->set('cache', function() use ($config) {
+    return new \Phalcon\Cache\Backend\File(
+        new \Phalcon\Cache\Frontend\Data(array("lifetime" => $config->cache->lifetime)),
+        array("cacheDir" => $config->cache->cacheDir)
+    );
+});

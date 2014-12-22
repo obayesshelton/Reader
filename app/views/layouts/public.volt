@@ -16,11 +16,7 @@
                             <a class="icon icon-display search" href="#">
                                 <div class="typeahead-wrapper">
 
-                                    {{ form('action': 'search') }}
-                                        {{ form.render('csrf', ['value': security.getToken()]) }}
-                                        {{ form.render('source', ['class': 'source']) }}
-                                        {{ form.render('search') }}
-                                    {{ endForm() }}
+
 
                                     <!--<input class="source" type="search" placeholder="source" value="">-->
                                 </div>

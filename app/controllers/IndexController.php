@@ -2,7 +2,12 @@
 namespace Vokuro\Controllers;
 
 use Vokuro\Models\Source;
+use Vokuro\Forms\LoginForm;
 use Vokuro\Forms\SignUpForm;
+use Vokuro\Forms\ForgotPasswordForm;
+use Vokuro\Auth\Exception as AuthException;
+use Vokuro\Models\Users;
+use Vokuro\Models\ResetPasswords;
 
 /**
  * Display the default index page.
@@ -10,15 +15,6 @@ use Vokuro\Forms\SignUpForm;
 class IndexController extends ControllerBase
 {
     public function initialize()
-    {
-        $form = $this->getDI()->get('Forms\SearchForm'); /* @var \Forms\LoginForm $form */;
-        $this->view->form = $form;
-    }
-
-    /**
-     * Default action. Set the public layout (layouts/public.volt)
-     */
-    public function indexAction()
     {
         $source = Source::find(array(
                 "status = :status:",
@@ -32,8 +28,42 @@ class IndexController extends ControllerBase
         $this->view->sourceSearch = json_encode($data);
         $this->view->source = $source;
 
-        $signUpform = new SignUpForm();
-        $this->view->signUpform = $signUpform;
+        $form = $this->getDI()->get('Forms\SearchForm'); /* @var \Forms\LoginForm $form */;
+        $this->view->form = $form;
+    }
+
+    /**
+     * Default action. Set the public layout (layouts/public.volt)
+     */
+    public function indexAction()
+    {
+        $signUpForm = new SignUpForm();
+
+        if ($this->request->isPost()) {
+
+            if ($signUpForm->isValid($this->request->getPost()) != false) {
+
+                $user = new Users();
+
+                $user->assign(array(
+                        'name' => $this->request->getPost('name', 'striptags'),
+                        'email' => $this->request->getPost('email'),
+                        'password' => $this->security->hash($this->request->getPost('password')),
+                        'profilesId' => 2
+                    ));
+
+                if ($user->save()) {
+                    return $this->dispatcher->forward(array(
+                            'controller' => 'index',
+                            'action' => 'index'
+                        ));
+                }
+
+                $this->flash->error($user->getMessages());
+            }
+        }
+
+        $this->view->signUpForm = $signUpForm;
 
         $this->view->setVar('logged_in', is_array($this->auth->getIdentity()));
         $this->view->setTemplateBefore('public');

@@ -35,48 +35,48 @@
 
                 <table class="signup">
                     <tr>
-                        <td align="right">{{ signUpform.label('name') }}</td>
+                        <td align="right">{{ signUpForm.label('name') }}</td>
                         <td>
-                            {{ signUpform.render('name') }}
-                            {{ signUpform.messages('name') }}
+                            {{ signUpForm.render('name') }}
+                            {{ signUpForm.messages('name') }}
                         </td>
                     </tr>
                     <tr>
-                        <td align="right">{{ signUpform.label('email') }}</td>
+                        <td align="right">{{ signUpForm.label('email') }}</td>
                         <td>
-                            {{ signUpform.render('email') }}
-                            {{ signUpform.messages('email') }}
+                            {{ signUpForm.render('email') }}
+                            {{ signUpForm.messages('email') }}
                         </td>
                     </tr>
                     <tr>
-                        <td align="right">{{ signUpform.label('password') }}</td>
+                        <td align="right">{{ signUpForm.label('password') }}</td>
                         <td>
-                            {{ signUpform.render('password') }}
-                            {{ signUpform.messages('password') }}
+                            {{ signUpForm.render('password') }}
+                            {{ signUpForm.messages('password') }}
                         </td>
                     </tr>
                     <tr>
-                        <td align="right">{{ signUpform.label('confirmPassword') }}</td>
+                        <td align="right">{{ signUpForm.label('confirmPassword') }}</td>
                         <td>
-                            {{ signUpform.render('confirmPassword') }}
-                            {{ signUpform.messages('confirmPassword') }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right"></td>
-                        <td>
-                            {{ signUpform.render('terms') }} {{ signUpform.label('terms') }}
-                            {{ signUpform.messages('terms') }}
+                            {{ signUpForm.render('confirmPassword') }}
+                            {{ signUpForm.messages('confirmPassword') }}
                         </td>
                     </tr>
                     <tr>
                         <td align="right"></td>
-                        <td>{{ signUpform.render('Sign Up') }}</td>
+                        <td>
+                            {{ signUpForm.render('terms') }} {{ signUpForm.label('terms') }}
+                            {{ signUpForm.messages('terms') }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"></td>
+                        <td>{{ signUpForm.render('Sign Up') }}</td>
                     </tr>
                 </table>
 
-                {{ signUpform.render('csrf', ['value': security.getToken()]) }}
-                {{ signUpform.messages('csrf') }}
+                {{ signUpForm.render('csrf', ['value': security.getToken()]) }}
+                {{ signUpForm.messages('csrf') }}
 
             </form>
 
