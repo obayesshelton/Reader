@@ -39,7 +39,7 @@ $di->set('view', function() use ($config) {
 
 			// compileAlways should be disabled on production
 			$volt->setOptions(array(
-				'compiledPath'      => $config->cache->cacheDir . 'views/',
+				'compiledPath'      => $config->application->cacheDir . 'views/',
 				'compiledSeparator' => '_',
 				'compileAlways'     => true
 			));

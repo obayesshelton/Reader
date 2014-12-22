@@ -19,7 +19,7 @@ $loader->registerDirs(
         $config->application->routesDir,
         $config->application->libraryDir,
         $config->application->viewsDir,
-        $config->cache->cacheDir,
+        $config->application->cacheDir,
         $config->application->modelsDir,
 	)
 )->register();
