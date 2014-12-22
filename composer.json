@@ -29,10 +29,13 @@
         }
     ],
     "require": {
-        "zendframework/zend-mime" :   "2.*",
-        "zendframework/zend-mail" :   "2.*",
+        "zendframework/zend-mime"            :   "2.*",
+        "zendframework/zend-mail"            :   "2.*",
         "josephbergevin/scraper-more-faster" : "dev-master",
-        "dg/rss-php" : "dev-master",
-        "psr/log": "1.0.*@dev"
+        "dg/rss-php"                         : "dev-master",
+        "psr/log"                            : "1.0.*@dev",
+        "nyholm/google-api-php-client"       : "dev-master",
+        "imagine/imagine"                    : "dev-master",
+        "crada/phalcon-user-plugin"          : "1.*@dev"
     }
 }
