@@ -136,7 +136,7 @@ $di->set('auth', function () {
  * Mail service uses AmazonSES
  */
 $di->set('mail', function () {
-    return new Mail();
+        return new \Phalcon\UserPlugin\Mail\Mail();
 });
 
 /**
