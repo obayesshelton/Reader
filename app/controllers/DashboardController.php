@@ -1,6 +1,7 @@
 <?php
 namespace Vokuro\Controllers;
 
+use Vokuro\Models\Source;
 use Phalcon\Tag;
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
@@ -19,6 +20,21 @@ class DashboardController extends ControllerBase
      */
     public function initialize()
     {
+        $source = Source::find(array(
+                "status = :status:",
+                "bind" => array('status' => 1),
+            ));
+
+        foreach($source as $sourceSingle) {
+            $data[]['val'] = $sourceSingle->getName();
+        }
+
+        $this->view->sourceSearch = json_encode($data);
+        $this->view->source = $source;
+
+        $form = $this->getDI()->get('Forms\SearchForm'); /* @var \Forms\LoginForm $form */;
+        $this->view->form = $form;
+
         $this->view->setTemplateBefore('private');
     }
 
