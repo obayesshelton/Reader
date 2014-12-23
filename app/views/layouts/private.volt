@@ -38,7 +38,8 @@
 
                     </div>
 
-                    {{ partial("layouts/advert") }}
+                    <!-- @Ben this seems to be wrong with viewing via the browser -->
+                    <!--{{ partial("layouts/advert") }}-->
 
                 </div>
             </div>

@@ -2,17 +2,13 @@
 namespace Vokuro\Controllers;
 
 use Vokuro\Models\Source;
-use Phalcon\Tag;
-use Phalcon\Mvc\Model\Criteria;
-use Phalcon\Paginator\Adapter\Model as Paginator;
-use Vokuro\Forms\ProfilesForm;
-use Vokuro\Models\Profiles;
+use Phalcon\Mvc\Controller,
+    Phalcon\Tag;
 
 /**
- * Vokuro\Controllers\ProfilesController
- * CRUD to manage profiles
+ * Display the default index page.
  */
-class DashboardController extends ControllerBase
+class SearchController extends ControllerBase
 {
     /**
      * Default action. Set the private (authenticated) layout (layouts/private.volt)
@@ -37,11 +33,12 @@ class DashboardController extends ControllerBase
         $this->view->setTemplateBefore('private');
     }
 
-    /**
-     * Default action, shows the search form
-     */
     public function indexAction()
     {
-
+        if ($this->request->isPost()) {
+            return $this->response->redirect('source/search/' . $this->request->getPost('source'));
+        } else {
+            echo 'NAUGHTY';
+        }
     }
 }
