@@ -6,7 +6,7 @@ $loader = new \Phalcon\Loader();
  */
 $loader->registerNamespaces(array(
     'Vokuro\Models' => $config->application->modelsDir,
-    'Vokuro\Controllers' => $config->application->controllersDir,
+    'Reader\Controllers' => $config->application->controllersDir,
     'Vokuro\Forms' => $config->application->formsDir,
     'Vokuro' => $config->application->libraryDir,
     "Forms"   => $config->application->formsDir

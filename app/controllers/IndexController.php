@@ -1,13 +1,8 @@
 <?php
-namespace Vokuro\Controllers;
+namespace Reader\Controllers;
 
-use Vokuro\Models\Source;
-use Vokuro\Forms\LoginForm;
 use Vokuro\Forms\SignUpForm;
-use Vokuro\Forms\ForgotPasswordForm;
-use Vokuro\Auth\Exception as AuthException;
 use Vokuro\Models\Users;
-use Vokuro\Models\ResetPasswords;
 
 /**
  * Display the default index page.

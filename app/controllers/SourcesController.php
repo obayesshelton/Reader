@@ -2,7 +2,7 @@
 
 namespace Reader\Controllers;
 
-class DashboardController extends ControllerBase
+class SourcesController extends ControllerBase
 {
     public function initialize()
     {

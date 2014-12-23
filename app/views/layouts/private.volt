@@ -10,12 +10,6 @@
 
                     <h2 class="icon icon-display">Search</h2>
 
-                    {{ form('action': 'search') }}
-                        {{ form.render('csrf', ['value': security.getToken()]) }}
-                        {{ form.render('source', ['class': 'source']) }}
-                        {{ form.render('search') }}
-                    {{ endForm() }}
-
                     <h2 class="icon icon-display">{{ auth.getName() }}</h2>
 
                     <ul class="nav">

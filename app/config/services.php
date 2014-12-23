@@ -12,7 +12,6 @@ use Phalcon\Flash\Direct as Flash;
 
 use Vokuro\Auth\Auth;
 use Vokuro\Acl\Acl;
-use Vokuro\Mail\Mail;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
@@ -103,7 +102,7 @@ $di->set('crypt', function () use ($config) {
  */
 $di->set('dispatcher', function () {
     $dispatcher = new Dispatcher();
-    $dispatcher->setDefaultNamespace('Vokuro\Controllers');
+    $dispatcher->setDefaultNamespace('Reader\Controllers');
     return $dispatcher;
 });
 
