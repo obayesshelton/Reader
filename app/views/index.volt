@@ -7,6 +7,9 @@
         <link rel="stylesheet" type="text/css" href="/css/multilevelmenu.css"/>
         <link rel="stylesheet" type="text/css" href="/css/component.css"/>
         <link rel="stylesheet" type="text/css" href="/css/animations.css"/>
+
+        {{ partial("layouts/analytics") }}
+
     </head>
 <body>
 
