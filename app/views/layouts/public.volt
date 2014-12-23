@@ -8,6 +8,12 @@
             <nav id="mp-menu" class="mp-menu">
                 <div class="mp-level">
 
+                    <ul>
+                        <li class="icon icon-arrow-left">
+                            {{ link_to("session/login", "login") }}
+                        </li>
+                    </ul>
+
                     <h2 class="icon icon-world">Feeds</h2>
                     <ul>
                         <li class="icon icon-arrow-left">
