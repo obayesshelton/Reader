@@ -59,6 +59,7 @@
 
                     </div>
 
+                    <!-- @Ben this seems to be wrong -->
                     {{ partial("layouts/advert") }}
 
                 </div>
